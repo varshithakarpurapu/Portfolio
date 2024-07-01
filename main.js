@@ -41,7 +41,7 @@ var typingEffect = new Typed(".typedText",{
 })
 
 function downloadFile() {
-window.open("file:///C:/Users/varsh/Downloads/Karpurapu-varshitha-FlowCV-Resume-20240625.pdf")
+window.open("myresume.pdf")
 }
 
 /* ----- ## -- SCROLL REVEAL ANIMATION -- ## ----- */
