@@ -1,120 +1,144 @@
-/* ----- NAVIGATION BAR FUNCTION ----- */
-function myMenuFunction(){
-  var menuBtn = document.getElementById("myNavMenu");
+// htmlcss progress circular bar 
+let htmlProgress = document.querySelector(".html-css"),
+  htmlValue = document.querySelector(".html-progress");
 
-  if(menuBtn.className === "nav-menu"){
-    menuBtn.className += " responsive";
+let htmlStartValue = 0,
+  htmlEndValue = 90,
+  htmlspeed = 30;
+
+let progresshtml = setInterval(() => {
+  htmlStartValue++;
+
+  htmlValue.textContent = `${htmlStartValue}%`;
+  htmlProgress.style.background = `conic-gradient(#fca61f ${
+    htmlStartValue * 3.6
+  }deg, #ededed 0deg)`;
+
+  if (htmlStartValue == htmlEndValue) {
+    clearInterval(progresshtml);
+  }
+}, htmlspeed);
+
+// javasript progress circular bar 
+let javascriptProgress = document.querySelector(".javascript"),
+  javascriptValue = document.querySelector(".javascript-progress");
+
+let javascriptStartValue = 0,
+  javascriptEndValue = 75,
+  jsspeed = 30;
+
+let progressjs = setInterval(() => {
+  javascriptStartValue++;
+
+  javascriptValue.textContent = `${javascriptStartValue}%`;
+  javascriptProgress.style.background = `conic-gradient(#7d2ae8 ${
+    javascriptStartValue * 3.6
+  }deg, #ededed 0deg)`;
+
+  if (javascriptStartValue == javascriptEndValue) {
+    clearInterval(progressjs);
+  }
+}, jsspeed);
+
+// php progress circular bar 
+let phpProgress = document.querySelector(".php"),
+  phpValue = document.querySelector(".php-progress");
+
+let phpStartValue = 0,
+  phpEndValue = 80,
+  phpspeed = 30;
+
+let progressphp = setInterval(() => {
+  phpStartValue++;
+
+  phpValue.textContent = `${phpStartValue}%`;
+  phpProgress.style.background = `conic-gradient(#20c997 ${
+    phpStartValue * 3.6
+  }deg, #ededed 0deg)`;
+
+  if (phpStartValue == phpEndValue) {
+    clearInterval(progressphp);
+  }
+}, phpspeed);
+
+// reactjs progress circular bar 
+let reactProgress = document.querySelector(".reactjs"),
+  reactValue = document.querySelector(".reactjs-progress");
+
+let reactStartValue = 0,
+  reactEndValue = 70,
+  rjsspeed = 30;
+
+let progressreact = setInterval(() => {
+  reactStartValue++;
+
+  reactValue.textContent = `${reactStartValue}%`;
+  reactProgress.style.background = `conic-gradient(#3f396d ${
+    reactStartValue * 3.6
+  }deg, #ededed 0deg)`;
+
+  if (reactStartValue == reactEndValue) {
+    clearInterval(progressreact);
+  }
+}, rjsspeed);
+
+
+// filter using javascript
+$(document).ready(function () {
+  $(".filter-item").click(function () {
+    const value = $(this).attr("data-filter");
+    if (value == "all") {
+      $(".post").show("1000");
+    } else {
+      $(".post")
+        .not("." + value)
+        .hide("1000");
+      $(".post")
+        .filter("." + value)
+        .show("1000");
+    }
+  });
+});
+
+
+// javascript for sticky navbar even if u scroll the navbar will be fixed
+document.addEventListener("DOMContentLoaded", function(){
+  window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        document.getElementById('navbar-top').classList.add('fixed-top');
+        // add padding top to show content behind navbar
+        navbar_height = document.querySelector('.navbar').offsetHeight;
+        document.body.style.paddingTop = navbar_height + 'px';
+      } else {
+        document.getElementById('navbar-top').classList.remove('fixed-top');
+         // remove padding top from body
+        document.body.style.paddingTop = '0';
+      } 
+  });
+}); 
+
+
+// adding funtionality to back to top button 
+
+//Get the button
+let mybutton = document.getElementById("btn-back-to-top");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 20 ||
+    document.documentElement.scrollTop > 20
+  ) {
+    mybutton.style.display = "block";
   } else {
-    menuBtn.className = "nav-menu";
+    mybutton.style.display = "none";
   }
 }
-
-/* ----- ADD SHADOW ON NAVIGATION BAR WHILE SCROLLING ----- */
-window.onscroll = function() {headerShadow()};
-
-function headerShadow() {
-  const navHeader =document.getElementById("header");
-
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop >  50) {
-
-    navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.1)";
-    navHeader.style.height = "70px";
-    navHeader.style.lineHeight = "70px";
-
-  } else {
-
-    navHeader.style.boxShadow = "none";
-    navHeader.style.height = "90px";
-    navHeader.style.lineHeight = "90px";
-
-  }
-}
-
-
-/* ----- TYPING EFFECT ----- */
-var typingEffect = new Typed(".typedText",{
-  strings : ["Software Developer","competitive coder"],
-  loop : true,
-  typeSpeed : 100, 
-  backSpeed : 80,
-  backDelay : 2000
-})
-
-function downloadFile() {
-window.open("myresume.pdf")
-}
-
-/* ----- ## -- SCROLL REVEAL ANIMATION -- ## ----- */
-const sr = ScrollReveal({
-      origin: 'top',
-      distance: '80px',
-      duration: 2000,
-      reset: true     
-})
-
-/* -- HOME -- */
-sr.reveal('.featured-text-card',{})
-sr.reveal('.featured-name',{delay: 100})
-sr.reveal('.featured-text-info',{delay: 200})
-sr.reveal('.featured-text-btn',{delay: 200})
-sr.reveal('.social_icons',{delay: 200})
-sr.reveal('.featured-image',{delay: 300})
-
-
-/* -- PROJECT BOX -- */
-sr.reveal('.project-box',{interval: 200})
-
-/* -- HEADINGS -- */
-sr.reveal('.top-header',{})
-
-/* ----- ## -- SCROLL REVEAL LEFT_RIGHT ANIMATION -- ## ----- */
-
-/* -- ABOUT INFO & CONTACT INFO -- */
-const srLeft = ScrollReveal({
-origin: 'left',
-distance: '80px',
-duration: 2000,
-reset: true
-})
-
-srLeft.reveal('.about-info',{delay: 100})
-srLeft.reveal('.contact-info',{delay: 100})
-
-/* -- ABOUT SKILLS & FORM BOX -- */
-const srRight = ScrollReveal({
-origin: 'right',
-distance: '80px',
-duration: 2000,
-reset: true
-})
-
-srRight.reveal('.skills-box',{delay: 100})
-srRight.reveal('.form-control',{delay: 100})
-
-
-
-/* ----- CHANGE ACTIVE LINK ----- */
-
-const sections = document.querySelectorAll('section[id]')
-
-function scrollActive() {
-const scrollY = window.scrollY;
-
-sections.forEach(current =>{
-  const sectionHeight = current.offsetHeight,
-      sectionTop = current.offsetTop - 50,
-    sectionId = current.getAttribute('id')
-
-  if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) { 
-
-      document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link')
-
-  }  else {
-
-    document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link')
-
-  }
-})
-}
-
-window.addEventListener('scroll', scrollActive)
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click",function(){
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+});
